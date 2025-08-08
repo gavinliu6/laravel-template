@@ -3,15 +3,25 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
-        "dev": "vite"
+        "lint": "./vendor/bin/pint --test",
+        "analyse": "./vendor/bin/phpstan analyse --memory-limit=2G",
+        "test": "php artisan test --stop-on-failure",
+        "check": "npm run lint && npm run analyse && npm run test",
+        "prepare": "simple-git-hooks",
+        "commit": "commit"
     },
     "devDependencies": {
-        "@tailwindcss/vite": "^4.0.0",
-        "axios": "^1.8.2",
-        "concurrently": "^9.0.1",
-        "laravel-vite-plugin": "^2.0.0",
-        "tailwindcss": "^4.0.0",
-        "vite": "^7.0.4"
+        "@commitlint/cli": "^19.8.1",
+        "@commitlint/config-conventional": "^19.8.1",
+        "@commitlint/prompt-cli": "^19.8.1",
+        "lint-staged": "^16.1.4",
+        "simple-git-hooks": "^2.13.1"
+    },
+    "simple-git-hooks": {
+        "pre-commit": "npx lint-staged",
+        "commit-msg": "npx commitlint --edit ${1}"
+    },
+    "lint-staged": {
+        "*.php": "npm run lint"
     }
 }
