@@ -14,7 +14,7 @@
         "@commitlint/cli": "^19.8.1",
         "@commitlint/config-conventional": "^19.8.1",
         "@commitlint/prompt-cli": "^19.8.1",
-        "lint-staged": "^16.1.4",
+        "lint-staged": "^16.1.5",
         "simple-git-hooks": "^2.13.1"
     },
     "simple-git-hooks": {
