@@ -40,7 +40,7 @@ class StrServiceProvider extends ServiceProvider
             return strspn($value, '0123456789abcdefghijklmnopqrstuvwxyz') === 12;
         });
 
-        Stringable::macro('isNanoid', fn () => Str::isNanoid($this->value));
+        Stringable::macro('isNanoid', fn () => Str::isNanoid((string) $this));
     }
 
     /**
